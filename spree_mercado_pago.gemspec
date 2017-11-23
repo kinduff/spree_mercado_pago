@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'spree_mercado_pago'
-  s.version     = '3.2.0.rc2'
+  s.version     = '1.0.0'
   s.summary     = 'Spree plugin yo integrate Mercado Pago'
   s.description = 'Integrates Mercado Pago with Spree'
   s.author      = "Manuel Barros Reyes"
@@ -9,11 +9,11 @@ Gem::Specification.new do |s|
   s.email       = 'manuca@gmail.com'
   s.license     = 'MIT'
 
-  s.add_dependency 'spree_core', '~> 3.2.0.rc2'
+  s.add_dependency 'spree_core', '>= 3.1.0', '< 4.0'
   s.add_dependency 'rest-client', '~> 2.0'
 
   s.add_dependency 'bootstrap-sass',  '>= 3.3.5.1', '< 3.4'
-  s.add_dependency 'canonical-rails', '~> 0.1.0'
+  s.add_dependency 'canonical-rails', '~> 0.2.1'
   s.add_dependency 'jquery-rails',    '~> 4.1'
 
   s.add_development_dependency 'capybara-accessible'

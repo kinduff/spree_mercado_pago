@@ -3,17 +3,18 @@
 MercadoPago = {
   hidePaymentSaveAndContinueButton: function(paymentMethod) {
     if (MercadoPago.paymentMethodID && paymentMethod.val() == MercadoPago.paymentMethodID) {
-      $('.continue').hide();
+      $('.form-buttons').hide();
       $('[data-hook=coupon_code]').hide();
     } else {
-      $('.continue').show();
+      $('.form-buttons').show();
       $('[data-hook=coupon_code]').show();
     }
   }
 };
 
-$(document).ready(function() {
+window.onload=function(){
   checkedPaymentMethod = $('div[data-hook="checkout_payment_step"] input[type="radio"]:checked');
+
   MercadoPago.hidePaymentSaveAndContinueButton(checkedPaymentMethod);
   paymentMethods = $('div[data-hook="checkout_payment_step"] input[type="radio"]').click(function (e) {
     MercadoPago.hidePaymentSaveAndContinueButton($(e.target));
@@ -22,4 +23,4 @@ $(document).ready(function() {
   $('button.mercado_pago_button').click(function(event){
     $(event.target).prop("disabled",true);
   });
-});
+};
