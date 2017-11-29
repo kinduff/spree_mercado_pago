@@ -36,11 +36,6 @@ module Spree
       redirect_to spree.checkout_state_path(state: :payment)
     end
 
-    def get_ipn
-      # Require to add the url as webhook since mercadopago sends an HTTP request expecting 200 
-      render :nothing => true, :status => 200, :content_type => 'text/html'
-    end
-
     def ipn
       notification = MercadoPago::Notification.
         new(operation_id: params[:id], topic: params[:topic])
