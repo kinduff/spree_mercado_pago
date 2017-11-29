@@ -37,17 +37,21 @@ module Spree
     end
 
     def ipn
-      notification = MercadoPago::Notification.
-        new(operation_id: params[:id], topic: params[:topic])
+       if params[:id].nil? || params[:topic].nil?
+         render body: '', status: 200, content_type: 'text/html'
+       else
+        notification = MercadoPago::Notification.
+          new(operation_id: params[:id], topic: params[:topic])
 
-      if notification.save
-        MercadoPago::HandleReceivedNotification.new(notification).process!
-        status = :ok
-      else
-        status = :bad_request
+        if notification.save
+          MercadoPago::HandleReceivedNotification.new(notification).process!
+          status = :ok
+        else
+          status = :bad_request
+        end
+
+         render body: '', status: status, content_type: 'text/html'
       end
-
-      render nothing: true, status: status
     end
 
     private
